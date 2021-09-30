@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - '4566:4566'
+    environment:
+      - SERVICES=lambda
+      - HOST_TMP_FOLDER=/tmp/localstack
+      - LAMBDA_EXECUTOR=local
+      - LAMBDA_REMOTE_DOCKER=false
+      - NODE_OPTIONS="--unhandled-rejections=strict"
+    volumes:
+      - ./lambda:/tmp/localstack/lambda
